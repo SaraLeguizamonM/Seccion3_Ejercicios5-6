@@ -1,13 +1,13 @@
 # Seccion 3
 Entregar el Código Git, el diagrama de flujo, el diagrama de clases, el pseudo código de los siguientes ejercicios: 
-1. **Jerarquía de Cuentas Bancarias.**
-2. **Sistema de Procesamiento de Pedidos.**
+1. **Servicio de Notificaciones Múltiples.**
+2. **Sistema de Repositorio de Datos.**
 
 ---
 
 ## Pseudocodigo
 <details>
-  <summary><strong>Ejercicio 3</strong></summary>
+  <summary><strong>Ejercicio 5</strong></summary>
   
 ```
 // Interfaz INotificador
@@ -56,17 +56,77 @@ Constructor(lista)
 listaNotificadores = lista
 FIN CONSTRUCTOR
 
-Método dispararAlertaMaxima(mensaje, destinatario)
+Metodo dispararAlertaMaxima(mensaje, destinatario)
 Para cada notificador en listaNotificadores
 notificador.enviar(mensaje, destinatario)
 FIN PARA
 FIN METODO
 
 FIN CLASE
+
+//-------------------------------------------
+
+// Clase MAIN
+
+Inicio
+
+Crear scanner
+Definir opcion como cadena
+
+Repetir
+Crear lista vacía de notificadores
+
+Mostrar "Bienvenido al servicio de notificaciones multiples"
+Mostrar "Selecciona el tipo de notificación"
+Mostrar "1. Tipo Email"
+Mostrar "2. Tipo SMS"
+Mostrar "3. Tipo Push"
+
+    Repetir
+        Leer tipo
+
+        Segun (tipo)
+            Caso "1":
+                Agregar NotificadorEmail a la lista
+            Caso "2":
+                Agregar NotificadorSMS a la lista
+            Caso "3":
+                Agregar NotificadorPush a la lista
+            De otro modo:
+                Mostrar "Opción invalida"
+                tipo = ""     
+            FinSegun
+    Hasta que tipo sea "1" o "2" o "3"
+
+        Crear objeto GestorDeAlertas enviando la lista
+
+        Mostrar "Ingresa el mensaje:"
+        Leer mensaje
+
+        Mostrar "Ingresa el destinatario:"
+        Leer destinatario
+
+        Llamar gestor.dispararAlertaMaxima(mensaje, destinatario)
+
+    Repetir
+        Mostrar "¿Quieres que ese mismo mensaje se mande por otro tipo? (si/no)"
+        Leer opcion
+
+        Si opcion NO es "si" y NO es "no"
+            Mostrar "Opcion invalida"
+        FINSI
+        Hasta que opcion sea "si" o "no"
+        Hasta que opcion sea "no"
+
+Cerrar scanner
+
+FIN CLASE
+FIN PROGRAMA
+
 ```
 
 </details>
 <details>
-  <summary><strong>Ejercicio 4</strong></summary>
+  <summary><strong>Ejercicio 6</strong></summary>
 
 </details>
