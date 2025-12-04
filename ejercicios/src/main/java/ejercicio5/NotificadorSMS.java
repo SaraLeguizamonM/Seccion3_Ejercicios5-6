@@ -6,5 +6,4 @@ public class NotificadorSMS implements INotificador {
         System.out.println("Enviando SMS a " +  destinatorio + "... el mensaje es: " + mensaje);
     }
 
-    
 }
