@@ -10,7 +10,7 @@ public class Main {
         String opcion;
 
         do {
-            List<INotificador> lista = new ArrayList<>();
+            List<INotificador> lista = new ArrayList<>(); // List for save the selected of notifiers
 
             System.out.println("Bienvenido al servicio de notificaciones múltiples");
             System.out.println("Selecciona el tipo de notificación:");
@@ -25,13 +25,13 @@ public class Main {
 
                 switch (tipo) {
                     case "1":
-                        lista.add(new NotificadorEmail());
+                        lista.add(new NotificadorEmail()); // Add Email notifier
                         break;
                     case "2":
-                        lista.add(new NotificadorSMS());
+                        lista.add(new NotificadorSMS()); // Add SMS notifier
                         break;
                     case "3":
-                        lista.add(new NotificadorPush());
+                        lista.add(new NotificadorPush()); // Add Push notifier
                         break;
                     default:
                         System.out.println("Opción inválida, vuelve a intentar.");
@@ -40,7 +40,7 @@ public class Main {
 
             } while (!tipo.equals("1") && !tipo.equals("2") && !tipo.equals("3"));
 
-            GestorDeAlertas gestor = new GestorDeAlertas(lista);
+            GestorDeAlertas gestor = new GestorDeAlertas(lista); // Create the Alert Manager with the selected notifiers
 
             System.out.print("Ingresa el mensaje: ");
             String mensaje = sc.nextLine();
@@ -53,7 +53,7 @@ public class Main {
             System.out.println(" ");
 
             do {
-                System.out.println("¿Quieres enviar otro tipo? (si/no)");
+                System.out.println("¿Quieres enviar otro tipo? (si/no)"); // Ask if the user wants to send another notification
                 opcion = sc.nextLine().toLowerCase();
 
                 if (!opcion.equals("si") && !opcion.equals("no")) {
