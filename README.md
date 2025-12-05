@@ -129,4 +129,142 @@ FIN PROGRAMA
 <details>
   <summary><strong>Ejercicio 6</strong></summary>
 
+```
+//INTERFAZ IRepositorio
+
+METODO guardar(id, data)
+METODO leer(id)
+METODO eliminar(id)
+
+FIN INTERFAZ
+
+//-------------------------------------------
+
+//CLASE RepositorioSQL IMPLEMENTA IRepositorio
+
+ARREGLO tabla[10]
+
+METODO guardar(data)
+PARA i DESDE 0 HASTA 9
+    SI tabla[i] ES null ENTONCES
+        tabla[i] = data
+        IMPRIMIR "SQL> INSERT INTO tabla VALUES (i, data)"
+        TERMINAR METODO
+    FIN SI
+FIN PARA
+
+IMPRIMIR "ERROR SQL: Tabla llena"
+FIN METODO
+
+METODO leer(id)
+    IMPRIMIR "SQL> SELECT * FROM tabla WHERE id = id"
+    IMPRIMIR tabla[id]
+FIN METODO
+
+METODO eliminar(id)
+    IMPRIMIR "SQL> DELETE FROM tabla WHERE id = id"
+    tabla[id] = null
+    IMPRIMIR "1 row deleted"
+FIN METODO
+
+FIN CLASE
+
+//-------------------------------------------
+
+// CLASE RepositorioEnMemoria IMPLEMENTA IRepositorio
+
+ARREGLO tabla[10]
+
+METODO guardar(data)
+    PARA i DESDE 0 HASTA 9
+        SI tabla[i] ES null ENTONCES
+            tabla[i] = data
+            IMPRIMIR "MEM> Guardado en posición i"
+            TERMINAR METODO
+        FIN SI
+    FIN PARA
+
+    IMPRIMIR "MEM> Error: Memoria llena"
+FIN METODO
+
+METODO leer(id)
+    IMPRIMIR "MEM> Leyendo posición id"
+    IMPRIMIR tabla[id]
+FIN METODO
+
+METODO eliminar(id)
+    IMPRIMIR "MEM> Eliminando posición id"
+    tabla[id] = null
+    IMPRIMIR "Eliminado"
+FIN METODO
+
+FIN CLASE
+
+//-------------------------------------------
+
+// MAIN
+
+DECLARAR repo COMO IRepositorio
+DECLARAR opcion COMO cadena
+DECLARAR tipo COMO cadena
+DECLARAR operacion COMO cadena
+DECLARAR id, dato COMO cadena
+
+REPETIR
+
+MOSTRAR "Seleccione tipo de repositorio"
+MOSTRAR "1. SQL"
+MOSTRAR "2. Memoria"
+
+LEER tipo
+
+SI tipo == "1"
+    repo = NUEVO RepositorioSQL
+SINO
+    repo = NUEVO RepositorioEnMemoria
+FIN SI
+
+    
+REPETIR
+    MOSTRAR "1. Guardar"
+    MOSTRAR "2. Leer"
+    MOSTRAR "3. Eliminar"
+
+    LEER operacion
+
+    SEGUN operacion HACER
+
+        CASO "1":
+        MOSTRAR "Ingrese dato a guardar"
+        LEER dato
+        repo.guardar(dato)
+
+        CASO "2":
+        MOSTRAR "Ingrese id a leer"
+        LEER id
+        repo.leer(id)
+
+        CASO "3":
+        MOSTRAR "Ingrese id a eliminar"
+        LEER id
+        repo.eliminar(id)
+
+        DEFECTO:
+        MOSTRAR "Opción inválida, volver a intentar"
+
+    FIN SEGUN
+
+    MOSTRAR "¿Desea hacer otra operación en este repositorio? (si/no)"
+    LEER opcion
+
+    HASTA opcion == "no"
+
+    MOSTRAR "¿Desea cambiar de repositorio? (si/no)"
+    LEER opcion
+
+HASTA opcion == "no"
+
+FIN CLASE
+
+FIN PROGRAMA
 </details>
