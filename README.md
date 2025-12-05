@@ -1,5 +1,5 @@
 # Seccion 3
-Entregar el Código Git, el diagrama de flujo, el diagrama de clases, el pseudo código de los siguientes ejercicios: 
+Entregar el Código Git, el diagrama de flujo, el diagrama de clases, el pseudo código de los siguientes ejercicios: `src/main/java `
 1. **Servicio de Notificaciones Múltiples.**
 2. **Sistema de Repositorio de Datos.**
 
