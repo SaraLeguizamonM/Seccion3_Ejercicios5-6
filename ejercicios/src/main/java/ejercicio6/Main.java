@@ -7,8 +7,8 @@ public class Main {
         String opcion = " ";
         String id;
 
-        RepositorioEnMemoria repositorioMemoria = new RepositorioEnMemoria();
-        RepositorioSQL repositorioSQL = new RepositorioSQL();
+        RepositorioEnMemoria repositorioMemoria = new RepositorioEnMemoria(); // Create an instance of RepositorioEnMemoria
+        RepositorioSQL repositorioSQL = new RepositorioSQL(); // Create an instance of RepositorioSQL
 
         do{
             System.out.println("Bienvenido al sistema de repositorio de datos");
@@ -37,24 +37,24 @@ public class Main {
                                     case "1":
                                         System.out.println("Ingresa lo que desea guardar");
                                         String datos = sc.nextLine();
-                                        repositorioSQL.guardar(datos);
+                                        repositorioSQL.guardar(datos); // Use the RepositorioSQL instance to save data
                                         break;
                                     case "2":
                                         System.out.println("Ingresa el id de lo que desea leer");
                                         id = sc.nextLine();
-                                        repositorioSQL.leer(id);
+                                        repositorioSQL.leer(id); // Use the RepositorioSQL instance to read data
                                         break;
                                     case "3":
                                         System.out.println("Ingresa el id de lo que desea eliminar");
                                         id = sc.nextLine();
-                                        repositorioSQL.eliminar(id);
+                                        repositorioSQL.eliminar(id); // Use the RepositorioSQL instance to delete data
                                         break;
                                     default:
                                         System.out.println("Opción inválida, vuelve a intentar.");
                                 }
                             }while(!opciones.equals("1") && !opciones.equals("2") && !opciones.equals("3"));
                             System.out.println("¿Desea hacer otra cosa? (si/no)");
-                            opcion = continuar();
+                            opcion = continuar(); // Call the continuar method to get user input
 
                         }while(opcion.equals("si"));
                         break;
@@ -73,24 +73,24 @@ public class Main {
                                     case "1":
                                         System.out.println("Ingresa lo que desea guardar");
                                         String datos = sc.nextLine();
-                                        repositorioMemoria.guardar(datos);
+                                        repositorioMemoria.guardar(datos); // Use the RepositorioEnMemoria instance to save data
                                         break;
                                     case "2":
                                         System.out.println("Ingresa el id de lo que desea leer");
                                         id = sc.nextLine();
-                                        repositorioMemoria.leer(id);
+                                        repositorioMemoria.leer(id); // Use the RepositorioEnMemoria instance to read data
                                         break;
                                     case "3":
                                         System.out.println("Ingresa el id de lo que desea eliminar");
                                         id = sc.nextLine();
-                                        repositorioMemoria.eliminar(id);
+                                        repositorioMemoria.eliminar(id); // Use the RepositorioEnMemoria instance to delete data
                                         break;
                                     default:
                                         System.out.println("Opción inválida, vuelve a intentar.");
                                 }
                             }while(!opciones.equals("1") && !opciones.equals("2") && !opciones.equals("3"));
                             System.out.println("¿Desea hacer otra cosa? (si/no)");
-                            opcion = continuar();
+                            opcion = continuar(); // Call the continuar method to get user input
 
                         }while(opcion.equals("si"));
                         break;
@@ -107,7 +107,8 @@ public class Main {
 
     }
 
-    public static String continuar(){
+    // Method continued
+    public static String continuar(){ // Method to get user input for continuing or not
         String opcion;
         do {
             opcion = sc.nextLine().toLowerCase();
